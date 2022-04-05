@@ -1,6 +1,6 @@
 package game.ekivoki.model;
 
-import com.geninc.ekivoki.model.parent.NameEntity;
+import game.ekivoki.model.parent.NameEntity;
 import lombok.Getter;
 import lombok.Setter;
 

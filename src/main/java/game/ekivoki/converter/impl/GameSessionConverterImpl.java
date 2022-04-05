@@ -1,9 +1,9 @@
 package game.ekivoki.converter.impl;
 
-import com.geninc.ekivoki.converter.GameSessionConverter;
-import com.geninc.ekivoki.dto.GameSessionDto;
-import com.geninc.ekivoki.model.GameSession;
-import com.geninc.ekivoki.util.DateUtils;
+import game.ekivoki.converter.GameSessionConverter;
+import game.ekivoki.dto.GameSessionDto;
+import game.ekivoki.model.GameSession;
+import game.ekivoki.util.DateUtils;
 
 public class GameSessionConverterImpl implements GameSessionConverter {
 

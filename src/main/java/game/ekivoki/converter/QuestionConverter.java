@@ -1,7 +1,7 @@
 package game.ekivoki.converter;
 
-import com.geninc.ekivoki.dto.QuestionDto;
-import com.geninc.ekivoki.model.Question;
+import game.ekivoki.dto.QuestionDto;
+import game.ekivoki.model.Question;
 
 public interface QuestionConverter {
 

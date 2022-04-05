@@ -1,8 +1,8 @@
 package game.ekivoki.converter.impl;
 
-import com.geninc.ekivoki.converter.GameConverter;
-import com.geninc.ekivoki.dto.GameDto;
-import com.geninc.ekivoki.model.Game;
+import game.ekivoki.converter.GameConverter;
+import game.ekivoki.dto.GameDto;
+import game.ekivoki.model.Game;
 
 public class GameConverterImpl implements GameConverter {
     @Override

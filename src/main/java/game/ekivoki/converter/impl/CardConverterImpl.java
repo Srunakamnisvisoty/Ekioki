@@ -1,9 +1,9 @@
 package game.ekivoki.converter.impl;
 
-import com.geninc.ekivoki.converter.CardConverter;
-import com.geninc.ekivoki.dto.CardDto;
-import com.geninc.ekivoki.model.Card;
-import com.geninc.ekivoki.util.DateUtils;
+import game.ekivoki.converter.CardConverter;
+import game.ekivoki.dto.CardDto;
+import game.ekivoki.model.Card;
+import game.ekivoki.util.DateUtils;
 
 public class CardConverterImpl implements CardConverter {
 

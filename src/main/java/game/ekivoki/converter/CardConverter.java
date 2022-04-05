@@ -1,7 +1,7 @@
 package game.ekivoki.converter;
 
-import com.geninc.ekivoki.dto.CardDto;
-import com.geninc.ekivoki.model.Card;
+import game.ekivoki.dto.CardDto;
+import game.ekivoki.model.Card;
 
 public interface CardConverter {
 

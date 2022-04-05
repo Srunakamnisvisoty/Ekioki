@@ -1,7 +1,7 @@
 package game.ekivoki.converter;
 
-import com.geninc.ekivoki.dto.GameDto;
-import com.geninc.ekivoki.model.Game;
+import game.ekivoki.dto.GameDto;
+import game.ekivoki.model.Game;
 
 public interface GameConverter {
 

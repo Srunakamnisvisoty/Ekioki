@@ -1,8 +1,8 @@
 package game.ekivoki.converter.impl;
 
-import com.geninc.ekivoki.converter.TopicConverter;
-import com.geninc.ekivoki.dto.TopicDto;
-import com.geninc.ekivoki.model.Topic;
+import game.ekivoki.converter.TopicConverter;
+import game.ekivoki.dto.TopicDto;
+import game.ekivoki.model.Topic;
 
 public class TopicConverterImpl implements TopicConverter {
 

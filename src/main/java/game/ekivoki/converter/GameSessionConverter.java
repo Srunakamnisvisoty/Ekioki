@@ -1,7 +1,7 @@
 package game.ekivoki.converter;
 
-import com.geninc.ekivoki.dto.GameSessionDto;
-import com.geninc.ekivoki.model.GameSession;
+import game.ekivoki.dto.GameSessionDto;
+import game.ekivoki.model.GameSession;
 
 public interface GameSessionConverter {
 

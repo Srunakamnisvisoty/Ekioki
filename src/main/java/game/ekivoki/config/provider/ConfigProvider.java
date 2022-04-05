@@ -1,10 +1,10 @@
 package game.ekivoki.config.provider;
 
-import com.geninc.ekivoki.config.reader.ConfigReader;
+import game.ekivoki.config.reader.ConfigReader;
 
 import java.util.Map;
 
-import static com.geninc.ekivoki.constants.Constants.CONNECTION_CONF;
+import static game.ekivoki.constants.Constants.CONNECTION_CONF;
 
 public class ConfigProvider {
 

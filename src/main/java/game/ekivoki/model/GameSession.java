@@ -1,6 +1,6 @@
 package game.ekivoki.model;
 
-import com.geninc.ekivoki.model.parent.DateCreationEntity;
+import game.ekivoki.model.parent.DateCreationEntity;
 import lombok.Getter;
 import lombok.Setter;
 

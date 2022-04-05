@@ -1,6 +1,6 @@
 package game.ekivoki.connector;
 
-import com.geninc.ekivoki.config.provider.ConfigProvider;
+import game.ekivoki.config.provider.ConfigProvider;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
