@@ -13,16 +13,16 @@ DELETE FROM game_session WHERE date_creation <= NOW() - INTERVAL 1 DAY
 # ----------------------------------------------------------------------------------------------------------------------
 topicFindAll=SELECT id, name FROM topic
 topicFindOneById=SELECT id, name FROM topic WHERE id = ?
-INSERT INTO topic (name) VALUES (?)
-UPDATE topic SET name = ? WHERE id = ?
+topicCreateINSERT INTO topic (name) VALUES (?)
+topicUpdateUPDATE topic SET name = ? WHERE id = ?
 topicDeleteById=DELETE FROM topic WHERE id = ?
 # ----------------------------------------------------------------------------------------------------------------------
 #   question
 # ----------------------------------------------------------------------------------------------------------------------
 questionFindAll=SELECT id, name, description FROM question
 questionFindById=SELECT id, name, description FROM question WHERE id = ?
-INSERT INTO question (name, description) VALUES (?, ?)
-UPDATE question SET name = ?, description = ? WHERE id = ?
+questionCreate=INSERT INTO question (name, description) VALUES (?, ?)
+questionUpdate=UPDATE question SET name = ?, description = ? WHERE id = ?
 questionDeleteById=DELETE FROM question WHERE id = ?
 # ----------------------------------------------------------------------------------------------------------------------
 #  card
