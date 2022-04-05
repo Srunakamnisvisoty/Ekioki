@@ -22,13 +22,8 @@ public class ConfigReader {
 
     private List<String> readWithoutComments(String fileName) {
         List<String> list = readAllLines(fileName);
-        List<String> result = new ArrayList<>(list.size());
-        for (String line : list) {
-            if (!line.trim().startsWith("#")) {
-                result.add(line);
-            }
-        }
-        return result;
+        list.removeIf(s -> s.trim().startsWith("#"));
+        return list;
     }
 
     private List<String> readAllLines(String fileName) {

@@ -8,12 +8,14 @@ import lombok.Setter;
 public class CardDto {
 
     private Long id;
-    private Long topicId;
-    private Long questionId;
+    private TopicDto topic;
+    private QuestionDto questionId;
     private int number;
     private String question;
     private int leadTime;
     private String dateCreation;
     private String lastModified;
     private Long version;
+
+
 }
