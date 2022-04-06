@@ -11,5 +11,4 @@ public interface JdbcRepository<M> {
 
     Optional<M> create(M model);
 
-    void remove(Long id);
 }

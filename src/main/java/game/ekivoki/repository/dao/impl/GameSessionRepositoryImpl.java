@@ -3,7 +3,6 @@ package game.ekivoki.repository.dao.impl;
 import game.ekivoki.connector.ConnectionSingleton;
 import game.ekivoki.connector.QuerySingleton;
 import game.ekivoki.model.GameSession;
-import game.ekivoki.model.Question;
 import game.ekivoki.repository.dao.GameSessionRepository;
 
 import java.sql.*;
@@ -67,7 +66,7 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
         if (connectionOptional.isPresent()) {
             String queryStr = queryMap.getQuery("game_sessionFindByUUID");
             try (PreparedStatement ps = connectionOptional.get().prepareStatement(queryStr)) {
-               ps.setString(2, sessionUUID);
+                ps.setString(2, sessionUUID);
                 ResultSet resultSet = ps.executeQuery();
                 if (resultSet.next()) {
                     GameSession gameSession = new GameSession();
@@ -104,7 +103,15 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
     }
 
     @Override
-    public void remove(Long id) {
-
+    public void remove() {
+        Optional<Connection> connectionOptional = ConnectionSingleton.instance(Optional.empty()).getConnection();
+        QuerySingleton queryMap = QuerySingleton.instance(null);
+        if (connectionOptional.isPresent()) {
+            try (Statement statement = connectionOptional.get().createStatement()) {
+                statement.executeUpdate(queryMap.getQuery("game_sessionDeleteByTime"));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

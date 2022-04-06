@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface QuestionRepository extends JdbcRepository<Question> {
 
     Optional<Question> update(Question question);
+
+    void remove(Long id);
 }
