@@ -43,7 +43,7 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         QuerySingleton queryMap = QuerySingleton.instance(null);
         if (connectionOptional.isPresent()) {
             try (Statement statement = connectionOptional.get().createStatement()) {
-                ResultSet resultSet = statement.executeQuery(queryMap.getQuery("questionFinaAll"));
+                ResultSet resultSet = statement.executeQuery(queryMap.getQuery("questionFindAll"));
                 List<Question> result = new ArrayList<>();
                 while (resultSet.next()) {
                     Question question = new Question();
