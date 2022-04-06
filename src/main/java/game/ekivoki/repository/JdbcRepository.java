@@ -9,5 +9,7 @@ public interface JdbcRepository<M> {
 
     List<M> findAll();
 
+    Optional<M> create(M model);
+
     void remove(Long id);
 }

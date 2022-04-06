@@ -58,6 +58,45 @@ public class TopicRepositoryImpl implements TopicRepository {
     }
 
     @Override
+    public Optional<Topic> create(Topic topic) {
+        Optional<Connection> connectionOptional = ConnectionSingleton.instance(Optional.empty()).getConnection();
+        QuerySingleton queryMap = QuerySingleton.instance(null);
+        if (connectionOptional.isPresent()) {
+            try (PreparedStatement ps = connectionOptional.get().prepareStatement(queryMap.getQuery("topicCreate"), Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, topic.getName());
+                if (ps.executeUpdate() > 0) {
+                    ResultSet resultSet = ps.getGeneratedKeys();
+                    if (resultSet.next()) {
+                        return findOne(resultSet.getLong(1));
+                    }
+                }
+            } catch (SQLException ex) {
+                System.out.println(this.getClass().getSimpleName() + ": " + ex.getMessage());
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Topic> update(Topic topic) {
+        Optional<Connection> connectionOptional = ConnectionSingleton.instance(Optional.empty()).getConnection();
+        QuerySingleton queryMap = QuerySingleton.instance(null);
+        if (connectionOptional.isPresent()) {
+            try (PreparedStatement ps = connectionOptional.get().prepareStatement(queryMap.getQuery("topicUpdate"))) {
+                Optional<Topic> optionalTopic = findOne(topic.getId());
+                if (optionalTopic.isPresent()) {
+                    ps.setString(1, topic.getName());
+                    ps.executeUpdate();
+                    return findOne(topic.getId());
+                }
+            } catch (SQLException ex) {
+                System.out.println(this.getClass().getSimpleName() + ": " + ex.getMessage());
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public void remove(Long id) {
         Optional<Connection> connectionOptional = ConnectionSingleton.instance(Optional.empty()).getConnection();
         QuerySingleton queryMap = QuerySingleton.instance(null);
