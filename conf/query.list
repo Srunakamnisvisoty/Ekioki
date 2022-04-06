@@ -3,11 +3,11 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  game_session
 # ----------------------------------------------------------------------------------------------------------------------
-SELECT id, session_uuid, date_creation FROM game_session
-SELECT id, session_uuid, date_creation FROM game_session WHERE id = ?
-SELECT id, session_uuid, date_creation FROM game_session WHERE session_uuid = ?
-INSERT INTO game_session (session_uuid, date_creation) VALUES (?, NOW())
-DELETE FROM game_session WHERE date_creation <= NOW() - INTERVAL 1 DAY
+game_sessionFindAll=SELECT id, session_uuid, date_creation FROM game_session
+game_sessionFindById=SELECT id, session_uuid, date_creation FROM game_session WHERE id = ?
+game_sessionBySessionUUID=SELECT id, session_uuid, date_creation FROM game_session WHERE session_uuid = ?
+game_sessionCreate=INSERT INTO game_session (session_uuid, date_creation) VALUES (?, NOW())
+game_sessionDeleteByTime=DELETE FROM game_session WHERE date_creation <= NOW() - INTERVAL 1 DAY
 # ----------------------------------------------------------------------------------------------------------------------
 #  topic
 # ----------------------------------------------------------------------------------------------------------------------
@@ -27,17 +27,17 @@ questionDeleteById=DELETE FROM question WHERE id = ?
 # ----------------------------------------------------------------------------------------------------------------------
 #  card
 # ----------------------------------------------------------------------------------------------------------------------
-SELECT card.id, topic.name, question.name, card.number, card.question, card.lead_time, card.date_creation, card.last_modified, card.version FROM card INNER JOIN topic ON topic.id = card.topick_id INNER JOIN question ON question.id = card.question_id
-SELECT card.id, topic.name, question.name, card.number, card.question, card.lead_time, card.date_creation, card.last_modified, card.version FROM card INNER JOIN topic ON topic.id = card.topick_id INNER JOIN question ON question.id = card.question_id WHERE card.id = ?
-SELECT card.id, topic.name, question.name, card.number, card.question, card.lead_time, card.date_creation, card.last_modified, card.version FROM card INNER JOIN topic ON topic.id = card.topick_id INNER JOIN question ON question.id = card.question_id WHERE card.number = ?
-INSERT INTO card (topic_id, question_id, number, question, lead_time, date_creation, last_modified, version) VALUES (?, ?, ?, ?, ?, NOW(), NOW(), 0)
-UPDATE card SET topic_id = ?, question_id = ?, number = ?, question = ?, lead_time = ?, last_modified = NOW(), version = ? WHERE id = ?
-DELETE FROM card WHERE id = ?
+cardFindAll=SELECT id, topic_id, question_id, number, question, lead_time, date_creation, last_modified, version FROM card
+cardFindById=SELECT id, topic_id, question_id, number, question, lead_time, date_creation, last_modified, version FROM card WHERE id = ?
+cardFindByNumber=SELECT id, topic_id, question_id, number, question, lead_time, date_creation, last_modified, version FROM card WHERE number = ?
+cardCreate=INSERT INTO card (topic_id, question_id, number, question, lead_time, date_creation, last_modified, version) VALUES (?, ?, ?, ?, ?, NOW(), NOW(), 0)
+cardUpdate=UPDATE card SET topic_id = ?, question_id = ?, number = ?, question = ?, lead_time = ?, last_modified = NOW(), version = ? WHERE id = ?
+cardDelete=DELETE FROM card WHERE id = ?
 # ----------------------------------------------------------------------------------------------------------------------
 #  game
 # ----------------------------------------------------------------------------------------------------------------------
 SELECT id, session_id, card_id FROM game
 SELECT id, session_id, card_id FROM game WHERE id = ?
-SELECT game.id, game.session_id, game.card_id FROM game INNER JOIN game_session ON game_session.id = game.session_id WHERE game_session.session_uuid = ? (указываем ранее полученный uuid)
+SELECT game.id, game.session_id, game.card_id FROM game INNER JOIN game_session ON game_session.id = game.session_id WHERE game_session.session_uuid = ?
 INSERT INTO (session_id, card_id) VALUES (?, ?)
 DELETE FROM game WHERE id = ?
