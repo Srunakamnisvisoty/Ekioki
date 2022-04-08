@@ -36,8 +36,8 @@ cardDelete=DELETE FROM card WHERE id = ?
 # ----------------------------------------------------------------------------------------------------------------------
 #  game
 # ----------------------------------------------------------------------------------------------------------------------
-SELECT id, session_id, card_id FROM game
-SELECT id, session_id, card_id FROM game WHERE id = ?
-SELECT game.id, game.session_id, game.card_id FROM game INNER JOIN game_session ON game_session.id = game.session_id WHERE game_session.session_uuid = ?
-INSERT INTO (session_id, card_id) VALUES (?, ?)
-DELETE FROM game WHERE id = ?
+gameFindAll=SELECT id, session_id, card_id FROM game
+gameFindOneById=SELECT id, session_id, card_id FROM game WHERE id = ?
+gameFindBySessionUuid=SELECT game.id, game.session_id, game.card_id FROM game INNER JOIN game_session ON game_session.id = game.session_id WHERE game_session.session_uuid = ?
+gameCreate=INSERT INTO (session_id, card_id) VALUES (?, ?)
+gameDeleteById=DELETE FROM game WHERE id = ?

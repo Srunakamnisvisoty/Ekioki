@@ -66,7 +66,7 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
         if (connectionOptional.isPresent()) {
             String queryStr = queryMap.getQuery("game_sessionFindByUUID");
             try (PreparedStatement ps = connectionOptional.get().prepareStatement(queryStr)) {
-                ps.setString(2, sessionUUID);
+                ps.setString(1, sessionUUID);
                 ResultSet resultSet = ps.executeQuery();
                 if (resultSet.next()) {
                     GameSession gameSession = new GameSession();

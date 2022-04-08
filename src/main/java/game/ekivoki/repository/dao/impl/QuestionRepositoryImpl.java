@@ -87,8 +87,8 @@ public class QuestionRepositoryImpl implements QuestionRepository {
         QuerySingleton queryMap = QuerySingleton.instance(null);
         if (connectionOptional.isPresent()) {
             try (PreparedStatement ps = connectionOptional.get().prepareStatement(queryMap.getQuery("questionUpdate"))) {
-                Optional<Question> optionalTopic = findOne(question.getId());
-                if (optionalTopic.isPresent()) {
+                Optional<Question> optionalQuestion = findOne(question.getId());
+                if (optionalQuestion.isPresent()) {
                     ps.setString(1, question.getName());
                     ps.setString(2, question.getDescription());
                     ps.executeUpdate();
