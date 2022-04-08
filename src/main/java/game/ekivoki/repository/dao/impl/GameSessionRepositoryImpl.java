@@ -60,7 +60,7 @@ public class GameSessionRepositoryImpl implements GameSessionRepository {
     }
 
     @Override
-    public Optional<GameSession> findBySessionUUID(String sessionUUID) {
+    public Optional<GameSession> findBySessionUuid(String sessionUUID) {
         Optional<Connection> connectionOptional = ConnectionSingleton.instance(Optional.empty()).getConnection();
         QuerySingleton queryMap = QuerySingleton.instance(null);
         if (connectionOptional.isPresent()) {

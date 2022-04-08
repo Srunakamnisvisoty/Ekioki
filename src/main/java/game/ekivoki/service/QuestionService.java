@@ -10,5 +10,7 @@ public interface QuestionService {
 
     List<Question> findAll();
 
+    Question save(Question question);
+
     void remove(Long id);
 }

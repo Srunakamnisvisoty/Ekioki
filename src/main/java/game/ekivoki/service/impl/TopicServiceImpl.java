@@ -1,6 +1,7 @@
 package game.ekivoki.service.impl;
 
 import game.ekivoki.exception.EntityNotFoundException;
+import game.ekivoki.model.Question;
 import game.ekivoki.model.Topic;
 import game.ekivoki.repository.dao.TopicRepository;
 import game.ekivoki.repository.dao.impl.TopicRepositoryImpl;
@@ -26,6 +27,14 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public List<Topic> findAll() {
         return topicRepository.findAll();
+    }
+
+    @Override
+    public Topic save(Topic topic) {
+        return topic.getId() == null ?
+                topicRepository.create(topic).orElseThrow(EntityNotFoundException::new) :
+                topicRepository.update(topic).orElseThrow(EntityNotFoundException::new);
+
     }
 
     @Override

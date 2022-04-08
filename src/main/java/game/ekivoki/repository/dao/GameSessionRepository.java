@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface GameSessionRepository extends JdbcRepository<GameSession> {
 
-    Optional<GameSession> findBySessionUUID(String sessionUUID);
+    Optional<GameSession> findBySessionUuid(String sessionUUID);
 
     void remove();
 }

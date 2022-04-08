@@ -19,13 +19,20 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public Question findOne(Long id) {
         return questionRepository.findOne(id).orElseThrow(
-                () -> new EntityNotFoundException("Item not found by id: " + id)
+                () -> new EntityNotFoundException("Question not found by id: " + id)
         );
     }
 
     @Override
     public List<Question> findAll() {
         return questionRepository.findAll();
+    }
+
+    @Override
+    public Question save(Question question) {
+        return question.getId() == null ?
+                questionRepository.create(question).orElseThrow(EntityNotFoundException::new) :
+                questionRepository.update(question).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
